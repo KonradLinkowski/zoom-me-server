@@ -27,7 +27,7 @@ services:
         depends_on:
             - mongo
     mongo:
-        image: mongo:4.4.3
+        image: andresvidal/rpi3-mongodb3
         volumes:
             - ${MONGODB_PATH}:/data/db
         ports:
