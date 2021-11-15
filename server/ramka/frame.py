@@ -12,7 +12,7 @@ class Frame:
         try:
             get_collection('frames').insert_one({
                 '_id': frame_id,
-                'password': bcrypt.hashpw(password.encode(), cfg.SALT)
+                'password': bcrypt.hashpw(password.encode(), bcrypt.gensalt())
             })
         except DuplicateKeyError:
             pass

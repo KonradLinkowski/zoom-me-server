@@ -24,11 +24,10 @@ def get_collection(collection: str):
 
 
 def is_valid_frame(frame_id: str, password: str):
-    password_hash = bcrypt.hashpw(password.encode(), cfg.SALT)
-    return get_collection('frames').find_one({
-        '_id': frame_id,
-        'password': password_hash
-    }) is not None
+    frame = get_collection('frames').find_one({ '_id': frame_id })
+    if (frame is None):
+        return False
+    return bcrypt.checkpw(password.encode(), frame.get('password'))
 
 
 def add_image_to_frame(frame_id: str, image: dict, sender: str, description: str):

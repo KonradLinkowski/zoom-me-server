@@ -4,7 +4,6 @@ import pydantic
 class MainConfig(pydantic.BaseSettings):
 
     IMAGES_DIR: str
-    SALT: bytes
 
     MONGODB_HOST: str = 'mongo'
     MONGODB_PORT: int = 27017
